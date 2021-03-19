@@ -1,0 +1,39 @@
+---
+title: "Gapminder"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gapminder)
+```
+
+## Introduction
+
+In this document we will be exploring the Gapminder dataset.
+
+## Observations of Gapminder
+
+### Countries with life expectancy less than 30
+
+```{r}
+gapminder %>% filter(lifeExp<30)
+```
+**Two** observations in the dataset had a life expectancy from birth of less than 30.  This includes Afghanistan in 1952 and Rwanda in 1992.
+
+### Countries with life expectancy greater than 81
+
+```{r}
+gapminder %>% filter(lifeExp>81)
+```
+**Seven** observations in the Gapminder dataset have had a life expectancy from birth of more than 81 years.  This included Australia, Iceland, Hong Kong, Japan and Switzerland in 2007 and Hong Kong and Japan in 2002.
+
+### Life Expectancy by continent in 2007
+
+```{r}
+gapminder2<-filter(gapminder,year==2007)
+boxplot(lifeExp~continent,data=gapminder2)
+```
+In 2007 Oceania had the highest median life expectancy, followed by Europe, Americas, Asia and lastly Africa.
+
